@@ -1,6 +1,6 @@
 /**
- * ASSISTENTE VIRTUAL – GESTÃO DE TRÁFEGO PAGO
- * Fluxo guiado focado em qualificação de leads, estratégia, otimização e relatórios
+ * ASSISTENTE VIRTUAL - GUSTAVO SILVA (TRÁFEGO PAGO)
+ * Fluxo otimizado para conversão e qualificação de leads
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,58 +10,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageArea = document.getElementById('bot-messages-list');
     const typingIndicator = document.getElementById('typing-indicator');
 
-    const WHATSAPP_NUMBER = "5547991597258";
+    const WHATSAPP_NUMBER = "5511939376933"; // Número atualizado conforme o site
     
     let userContext = {
         service: null,
         detail: null
     };
 
-    // Estrutura de Navegação do Chat
+    // Estrutura de Navegação do Chat (Refeita do Zero)
     const flow = {
         start: {
-            text: "Olá! 👋 Seja bem-vindo.<br><br>Sou o assistente virtual e vou te ajudar a encontrar a melhor estratégia para atrair clientes e aumentar suas vendas. O que você busca hoje?",
+            text: "Olá! 👋 Sou o assistente do Gustavo Silva.<br><br>Estou aqui para te ajudar a escalar seu negócio através do tráfego pago e estratégias digitais de alta performance. Como posso te ajudar hoje?",
             options: [
-                { text: "🚀 Quero Criar campanhas", next: "campanhas" },
-                { text: "📈 Melhorar campanhas", next: "otimizacao" },
-                { text: "📊 Estratégia e planejamento", next: "estrategia" },
-                { text: "📑 Relatórios e análise de resultados", next: "relatorios" }
+                { text: "🚀 Quero vender mais com anúncios", next: "anuncios" },
+                { text: "📈 Preciso de mais leads qualificados", next: "leads" },
+                { text: "📱 Quero melhorar meu Social Media", next: "social" },
+                { text: "🔍 Gostaria de uma consultoria", next: "consultoria" }
             ]
         },
 
-        campanhas: {
-            text: "Perfeito! Para criarmos campanhas eficientes, preciso entender melhor seu negócio. Qual é o seu objetivo principal?",
+        anuncios: {
+            text: "Excelente! O tráfego pago é o caminho mais rápido para vendas. Em qual plataforma você tem mais interesse em anunciar?",
             options: [
-                { text: "Gerar leads qualificados", next: "final", context: { service: "Tráfego Pago", detail: "Geração de Leads" } },
-                { text: "Vender produtos ou serviços", next: "final", context: { service: "Tráfego Pago", detail: "Vendas Diretas" } },
-                { text: "Divulgar minha marca", next: "final", context: { service: "Tráfego Pago", detail: "Branding e Alcance" } }
+                { text: "Meta Ads (Instagram/Facebook)", next: "final", context: { service: "Vendas com Anúncios", detail: "Meta Ads" } },
+                { text: "Google Ads (Pesquisa/YouTube)", next: "final", context: { service: "Vendas com Anúncios", detail: "Google Ads" } },
+                { text: "TikTok Ads", next: "final", context: { service: "Vendas com Anúncios", detail: "TikTok Ads" } },
+                { text: "Quero uma estratégia multicanal", next: "final", context: { service: "Vendas com Anúncios", detail: "Multicanal" } }
             ]
         },
 
-        otimizacao: {
-            text: "Ótima decisão! A otimização correta reduz custos e aumenta conversões. O que mais te incomoda hoje nas suas campanhas?",
+        leads: {
+            text: "Gerar leads qualificados é fundamental para o crescimento B2B ou serviços. Qual o seu nicho de atuação?",
             options: [
-                { text: "Alto custo por lead/venda", next: "final", context: { service: "Otimização de Campanhas", detail: "Redução de CPA" } },
-                { text: "Poucas conversões", next: "final", context: { service: "Otimização de Campanhas", detail: "Aumento de Conversão" } },
-                { text: "Campanhas sem escala", next: "final", context: { service: "Otimização de Campanhas", detail: "Escala de Resultados" } }
+                { text: "Prestação de Serviços", next: "final", context: { service: "Geração de Leads", detail: "Serviços" } },
+                { text: "Imobiliário / Automotivo", next: "final", context: { service: "Geração de Leads", detail: "Alto Valor Agregado" } },
+                { text: "Educação / Infoprodutos", next: "final", context: { service: "Geração de Leads", detail: "Infoprodutos" } },
+                { text: "Outros nichos", next: "final", context: { service: "Geração de Leads", detail: "Geral" } }
             ]
         },
 
-        estrategia: {
-            text: "Estratégia é a base de resultados consistentes. Como você se encontra hoje?",
+        social: {
+            text: "Presença digital é autoridade. Como você quer potencializar suas redes sociais?",
             options: [
-                { text: "Estou começando do zero", next: "final", context: { service: "Estratégia de Tráfego", detail: "Início do Projeto" } },
-                { text: "Já anuncio, mas sem estratégia clara", next: "final", context: { service: "Estratégia de Tráfego", detail: "Reestruturação" } },
-                { text: "Quero escalar com segurança", next: "final", context: { service: "Estratégia de Tráfego", detail: "Escala e Previsibilidade" } }
+                { text: "Gestão completa de conteúdo", next: "final", context: { service: "Social Media", detail: "Gestão Completa" } },
+                { text: "Design e Identidade Visual", next: "final", context: { service: "Social Media", detail: "Design" } },
+                { text: "Estratégia de Engajamento", next: "final", context: { service: "Social Media", detail: "Engajamento" } }
             ]
         },
 
-        relatorios: {
-            text: "Analisar dados corretamente é o que gera crescimento real. Como podemos te ajudar?",
+        consultoria: {
+            text: "Uma análise estratégica pode mudar o jogo do seu negócio. O que você busca na consultoria?",
             options: [
-                { text: "Relatórios claros e profissionais", next: "final", context: { service: "Relatórios de Performance", detail: "Análise Completa" } },
-                { text: "Acompanhar ROI e métricas", next: "final", context: { service: "Relatórios de Performance", detail: "ROI e Indicadores" } },
-                { text: "Entender onde investir mais", next: "final", context: { service: "Relatórios de Performance", detail: "Tomada de Decisão" } }
+                { text: "Análise de campanhas atuais", next: "final", context: { service: "Consultoria", detail: "Auditoria de Contas" } },
+                { text: "Planejamento de escala", next: "final", context: { service: "Consultoria", detail: "Escala de Resultados" } },
+                { text: "Estruturação de funil de vendas", next: "final", context: { service: "Consultoria", detail: "Funil de Vendas" } }
             ]
         }
     };
@@ -106,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             messageArea.appendChild(msgDiv);
             messageArea.scrollTop = messageArea.scrollHeight;
-        }, 700);
+        }, 800);
     }
 
     function showUserMessage(text) {
@@ -125,34 +127,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (option.next === "final") {
-            showBotMessage("Perfeito! Já entendi seu objetivo. Agora vou te conectar com um especialista em gestão de tráfego para analisar seu caso.");
+            showBotMessage("Perfeito! Já tenho as informações iniciais. Agora, para te dar um atendimento personalizado e analisar seu caso, vou te conectar diretamente ao meu WhatsApp.");
             setTimeout(() => {
-                const finishBtn = { text: "📲 Falar com especialista agora", action: "send" };
-                showBotMessage("Clique abaixo para enviar suas informações pelo WhatsApp:", [finishBtn]);
-            }, 1000);
+                const finishBtn = { text: "📲 Falar com Gustavo agora", action: "send" };
+                showBotMessage("Clique no botão abaixo para iniciarmos:", [finishBtn]);
+            }, 1200);
         } else if (option.action === "send") {
             finishAndSend();
         } else if (option.action === "restart") {
             messageArea.innerHTML = '';
             renderStep("start");
         } else if (option.action === "close") {
-            showBotMessage("Obrigado pelo contato! 🚀 Estaremos prontos para escalar seus resultados quando precisar.");
+            showBotMessage("Obrigado pelo contato! 🚀 Vamos transformar seus anúncios em lucro.");
             setTimeout(() => {
                 chatContainer.classList.remove('active');
-            }, 3000);
+            }, 2500);
         } else {
             renderStep(option.next);
         }
     }
 
     function finishAndSend() {
-        const message = `Olá! Vim pelo site e gostaria de um atendimento especializado em gestão de tráfego.
+        const message = `Olá Gustavo! Vim pelo seu site e gostaria de escalar meus resultados.
 
-📌 *Resumo da Solicitação:*
-🚀 *Serviço:* ${userContext.service}
-📊 *Objetivo:* ${userContext.detail}
+📌 *Interesse:* ${userContext.service}
+📊 *Detalhe:* ${userContext.detail}
 
-Fico no aguardo para analisarmos meu projeto.`;
+Pode me ajudar com essa estratégia?`;
 
         const encodedMsg = encodeURIComponent(message);
         const link = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
@@ -160,10 +161,10 @@ Fico no aguardo para analisarmos meu projeto.`;
         window.open(link, '_blank');
 
         setTimeout(() => {
-            showBotMessage("Mensagem pronta! Deseja fazer mais alguma coisa?", [
-                { text: "🔄 Iniciar nova conversa", action: "restart" },
-                { text: "👋 Encerrar atendimento", action: "close" }
+            showBotMessage("Deseja iniciar uma nova consulta ou encerrar o atendimento?", [
+                { text: "🔄 Nova consulta", action: "restart" },
+                { text: "👋 Encerrar", action: "close" }
             ]);
-        }, 1500);
+        }, 2000);
     }
 });

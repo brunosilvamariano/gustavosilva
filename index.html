@@ -750,10 +750,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Swiper Navigation -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                     <!-- Swiper Pagination -->
                     <div class="swiper-pagination"></div>
                 </div>
@@ -1071,6 +1067,33 @@
             aria-label="Voltar para o topo da página">
         <i class="bi bi-arrow-up"></i>
     </button>
+
+     <!-- Assistente Virtual Gustavo -->
+    <div id="bot-floating-button" aria-label="Abrir chat com assistente">
+        <img src="./images/boot_gustavo.jpg" alt="Assistente Gustavo">
+    </div>
+
+    <div id="bot-chat-container">
+        <div class="bot-header">
+            <div class="bot-info">
+                <div class="bot-avatar">
+                    <img src="./images/boot_gustavo.jpg" alt="Assistente Gustavo">
+                </div>
+                <div class="bot-status">
+                    <h4>Gustavo Silva</h4>
+                    <span>Online agora</span>
+                </div>
+            </div>
+            <div class="bot-close">&times;</div>
+        </div>
+        <div class="bot-messages" id="bot-messages-list">
+            <!-- Mensagens serão inseridas aqui -->
+        </div>
+        <div id="typing-indicator" class="typing-indicator">
+            <span></span><span></span><span></span>
+        </div>
+        <!-- Campo de digitação removido para fluxo 100% guiado por botões -->
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
