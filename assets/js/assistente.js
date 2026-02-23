@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Estrutura de Navegação do Chat
     const flow = {
         start: {
-            text: "Olá! 👋 Seja bem-vindo.<br><br>Sou o assistente virtual e vou te ajudar a encontrar a melhor estratégia para atrair clientes, gerar leads e aumentar suas vendas. O que você busca hoje?",
+            text: "Olá! 👋 Seja bem-vindo.<br><br>Sou o assistente virtual e vou te ajudar a encontrar a melhor estratégia para atrair clientes e aumentar suas vendas. O que você busca hoje?",
             options: [
-                { text: "🚀 Criar campanhas de tráfego pago", next: "campanhas" },
-                { text: "📈 Melhorar campanhas existentes", next: "otimizacao" },
+                { text: "🚀 Quero Criar campanhas", next: "campanhas" },
+                { text: "📈 Melhorar campanhas", next: "otimizacao" },
                 { text: "📊 Estratégia e planejamento", next: "estrategia" },
                 { text: "📑 Relatórios e análise de resultados", next: "relatorios" }
             ]
